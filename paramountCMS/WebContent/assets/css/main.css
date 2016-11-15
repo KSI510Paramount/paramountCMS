@@ -2881,6 +2881,13 @@
 					width: 3em;
 					height: 3em;
 				}
+				
+				#header .logo .paramount img {
+					display: block;
+					width: 10em;
+					height: 3em;
+					padding-left: 3%;
+				}
 
 		#header nav {
 			position: fixed;

@@ -17,6 +17,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="<c:url value="/assets/css/ie8.css"/>" /><![endif]-->
 		<link rel="stylesheet" href="<c:url value="/assets/css/datatables.min.css"/>" />
 		<link rel="stylesheet" href="<c:url value="/assets/css/jquery-ui.css"/>" />
+		<link rel="stylesheet" href="<c:url value="/assets/css/common.css"/>" />
 		
 		<!-- Scripts -->
 			<script src="<c:url value="/assets/js/jquery.min.js"/>"></script>

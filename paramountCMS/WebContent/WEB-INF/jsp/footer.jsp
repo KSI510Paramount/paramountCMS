@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer id="footer">
 	<div class="inner">
-		<section>
+		<!-- <section>
 			<h2>Get in touch</h2>
 			<form method="post" action="#">
 				<div class="field half first">
@@ -17,8 +17,8 @@
 					<li><input type="submit" value="Send" class="special" /></li>
 				</ul>
 			</form>
-		</section>
-		<section>
+		</section> -->
+		<!-- <section>
 			<h2>Follow</h2>
 			<ul class="icons">
 				<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
@@ -30,9 +30,9 @@
 				<li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
 				<li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
 			</ul>
-		</section>
+		</section> -->
 		<ul class="copyright">
-			<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="#">CMS</a></li>
 		</ul>
 	</div>
 </footer>

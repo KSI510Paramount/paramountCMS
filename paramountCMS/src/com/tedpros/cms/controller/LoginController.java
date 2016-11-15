@@ -11,6 +11,11 @@ public class LoginController extends TopController{
 	@RequestMapping(value = "/postLogin.do")
 	public String postLogin(WebRequest request){
 		System.out.println(getUsername());
+		return getHome(request);
+	}
+	
+	@RequestMapping(value = "/getHome.do")
+	public String getHome(WebRequest request){
 		return "login.home";
 	}
 	
