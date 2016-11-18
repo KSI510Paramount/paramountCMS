@@ -17,6 +17,11 @@ public class CodeValueServiceImpl extends CmsDAOImpl implements CodeValueService
 		persist(codeValue);
 	}
 	
+	@Override
+	public void updateCodeValue(CodeValueT codeValue){
+		update(codeValue);
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CodeValueT> findByCodeGroup(String codeGroup){

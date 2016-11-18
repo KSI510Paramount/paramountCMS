@@ -31,16 +31,16 @@ public class CodeValueT extends DomainEntity{
 	@Column(name = "OBJECTID", unique=true, nullable=false, updatable=false, precision=18)
 	private Long objectid;
 
-	@Column(name = "CODE", nullable=false, length=50, columnDefinition="nchar(50)")
+	@Column(name = "CODE", nullable=false, length=50, columnDefinition="varchar(50)")
 	private String code;
 
-   @Column(name = "CODE_GROUP", nullable=false, length=50, columnDefinition="nchar(50)")
+   @Column(name = "CODE_GROUP", nullable=false, length=50, columnDefinition="varchar(50)")
    private String codeGroup;
 
-   @Column(name = "SHORT_DESCRIPTION", nullable=false, length=100, columnDefinition="nchar(100)")
+   @Column(name = "SHORT_DESCRIPTION", nullable=false, length=100, columnDefinition="varchar(100)")
    private String shortDescription;  
    
-   @Column(name = "LONG_DESCRIPTION", length=500, columnDefinition="nchar(500)")
+   @Column(name = "LONG_DESCRIPTION", length=500, columnDefinition="varchar(500)")
    private String longDescription;  
    
    @Temporal(TemporalType.TIMESTAMP)
@@ -51,6 +51,9 @@ public class CodeValueT extends DomainEntity{
    @Column(name = "EFFECTIVE_THRU_DATETIME")
    private Date effectiveThruDateTime;
 
+   @Column(name = "SEQ")
+   private Integer seq;
+   
 	@Override
 	public Long getObjectid() {
 		return objectid;
@@ -107,5 +110,13 @@ public class CodeValueT extends DomainEntity{
 
 	public void setEffectiveThruDateTime(Date effectiveThruDateTime) {
 		this.effectiveThruDateTime = effectiveThruDateTime;
+	}
+
+	public Integer getSeq() {
+		return seq;
+	}
+
+	public void setSeq(Integer seq) {
+		this.seq = seq;
 	}
 }

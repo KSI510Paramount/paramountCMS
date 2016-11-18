@@ -19,7 +19,10 @@
 					<td><c:out value="${codeValue.code }"></c:out></td>
 					<td><c:out value="${codeValue.shortDescription }"></c:out></td>
 					<td><c:out value="${codeValue.longDescription }"></c:out></td>
-					<td><a href="<c:url value="/codeValue/getDelete.do?objectid=${codeValue.objectid }"/>">[Delete]</a></td>
+					<td>
+						<a href="<c:url value="/codeValue/getEdit.do?objectid=${codeValue.objectid }"/>">[Edit]</a>&nbsp;
+						<a href="<c:url value="/codeValue/getDelete.do?objectid=${codeValue.objectid }"/>">[Delete]</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

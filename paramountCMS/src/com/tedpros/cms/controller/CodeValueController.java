@@ -36,7 +36,32 @@ public class CodeValueController extends TopController{
 		CodeValueT codeValue = new CodeValueT();
 		getDataBinder(request, codeValue);
 		codeValueService.addCodeValue(codeValue);
-		return "redirect:/codeValue/getAdd.do";
+		return "redirect:/codeValue/getList.do";
+	}
+	
+	@RequestMapping(value = "/getEdit.do", method=RequestMethod.GET)
+	public String getEdit(WebRequest request){
+		String codeValueOid= request.getParameter("objectid");
+		if(StringUtils.isNotBlank(codeValueOid)){
+			CodeValueT codeValue = codeValueService.findById(CodeValueT.class, Long.valueOf(codeValueOid));
+			if(codeValue != null){
+				request.setAttribute("codeValue", codeValue, WebRequest.SCOPE_REQUEST);
+			}
+		}
+		return "codeValue.edit";
+	}
+	
+	@RequestMapping(value = "/postEdit.do", method=RequestMethod.POST)
+	public String postEdit(WebRequest request){
+		String codeValueOid= request.getParameter("objectid");
+		if(StringUtils.isNotBlank(codeValueOid)){
+			CodeValueT codeValue = codeValueService.findById(CodeValueT.class, Long.valueOf(codeValueOid));
+			if(codeValue != null){
+				getDataBinder(request, codeValue);
+				codeValueService.updateCodeValue(codeValue);
+			}
+		}
+		return "redirect:/codeValue/getList.do";
 	}
 	
 	@RequestMapping(value = "/getDelete.do", method=RequestMethod.GET)

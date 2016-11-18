@@ -21,9 +21,58 @@
     <put-attribute name="title" value="Add Code Value"/>
     <put-attribute name="body" value="/WEB-INF/jsp/admin/codeValue/add.jsp" />
   </definition>
+  <definition name="codeValue.edit" extends="initialTemplate">
+    <put-attribute name="title" value="Edit Code Value"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/codeValue/edit.jsp" />
+  </definition>
   <definition name="codeValue.list" extends="initialTemplate">
     <put-attribute name="title" value="Code Value List"/>
     <put-attribute name="body" value="/WEB-INF/jsp/admin/codeValue/list.jsp" />
   </definition>
   <!-- CodeValue Module -->
+  
+  <!-- Course Module -->
+  <definition name="course.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Course"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/course/add.jsp" />
+  </definition>
+  <definition name="course.edit" extends="initialTemplate">
+    <put-attribute name="title" value="Edit Course"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/course/edit.jsp" />
+  </definition>
+  <definition name="course.list" extends="initialTemplate">
+    <put-attribute name="title" value="Course List"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/course/list.jsp" />
+  </definition>
+  <!-- Course Module -->
+  
+  <!-- Student Module -->
+  <definition name="student.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Student"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/student/add.jsp" />
+  </definition>
+  <definition name="student.edit" extends="initialTemplate">
+    <put-attribute name="title" value="Edit Student"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/student/edit.jsp" />
+  </definition>
+  <definition name="student.list" extends="initialTemplate">
+    <put-attribute name="title" value="Student List"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/student/list.jsp" />
+  </definition>
+  <!-- Student Module -->
+  
+  <!-- Faculty Module -->
+  <definition name="faculty.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Faculty"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/faculty/add.jsp" />
+  </definition>
+  <definition name="faculty.edit" extends="initialTemplate">
+    <put-attribute name="title" value="Edit Faculty"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/faculty/edit.jsp" />
+  </definition>
+  <definition name="faculty.list" extends="initialTemplate">
+    <put-attribute name="title" value="Faculty List"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/faculty/list.jsp" />
+  </definition>
+  <!-- Faculty Module -->
 </tiles-definitions>

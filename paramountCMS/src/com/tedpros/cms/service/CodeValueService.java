@@ -12,4 +12,6 @@ public interface CodeValueService extends CmsDAO{
 	List<CodeValueT> findByCodeGroup(String codeGroup);
 
 	List<CodeValueT> findAll();
+
+	void updateCodeValue(CodeValueT codeValue);
 }
