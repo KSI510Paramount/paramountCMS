@@ -73,6 +73,19 @@ public abstract class CmsDAOImpl implements CmsDAO {
 		return results;
 	}
 	
+	@Override
+	public <T> T singleByNamedQueryAndParams(String queryName, Map<String, Object> params){
+		T results = null;
+		Session session = getOpenSession();
+		Query query = session.createNamedQuery(queryName);
+		for (Entry<String, Object> param : params.entrySet()) {
+			query.setParameter(param.getKey(), param.getValue());
+		}
+		results = (T) query.getSingleResult();
+		session.close();
+		return results;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T findById(Class<?> entityClass, Long id) {

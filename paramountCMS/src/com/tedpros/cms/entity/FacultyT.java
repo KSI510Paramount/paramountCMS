@@ -21,7 +21,8 @@ import org.hibernate.annotations.NotFoundAction;
 @Entity
 @Table(name="FACULTY_T",schema="CMSWEB")
 @NamedQueries({
-	@NamedQuery(name="FacultyT.findAll", query="Select f from FacultyT f")
+	@NamedQuery(name="FacultyT.findAll", query="Select f from FacultyT f"),
+	@NamedQuery(name="FacultyT.findByUsername", query="Select f from FacultyT f WHERE f.userOid.username = :username")
 })
 
 public class FacultyT extends DomainEntity{
@@ -54,11 +55,25 @@ public class FacultyT extends DomainEntity{
    
    @ManyToOne
    @NotFound(action=NotFoundAction.IGNORE)
-   @JoinColumn(name = "FACULTY_PREFIX")
-   private CodeValueT facultyPrefixOid;
+   @JoinColumn(name = "PREFIX_OID")
+   private CodeValueT prefixOid;
    
+   @ManyToOne
+   @NotFound(action=NotFoundAction.IGNORE)
+   @JoinColumn(name = "FACULTY_TYPE_OID")
+   private CodeValueT facultyTypeOid;
    
-   @OneToOne(cascade = CascadeType.ALL)
+   @ManyToOne
+   @NotFound(action=NotFoundAction.IGNORE)
+   @JoinColumn(name = "FACULTY_STATUS_OID")
+   private CodeValueT facultyStatusOid;
+   
+   @ManyToOne
+   @NotFound(action=NotFoundAction.IGNORE)
+   @JoinColumn(name = "CLASS_STATUS_OID")
+   private CodeValueT classStatusOid;
+   
+   @OneToOne(cascade = CascadeType.REMOVE)
    @NotFound(action=NotFoundAction.IGNORE)
    @JoinColumn(name = "USER_OID")
    private UserT userOid;
@@ -111,12 +126,36 @@ public class FacultyT extends DomainEntity{
 		this.genderOid = genderOid;
 	}
 
-	public CodeValueT getFacultyPrefixOid() {
-		return facultyPrefixOid;
+	public CodeValueT getPrefixOid() {
+		return prefixOid;
 	}
 
-	public void setFacultyPrefixOid(CodeValueT facultyPrefixOid) {
-		this.facultyPrefixOid = facultyPrefixOid;
+	public void setPrefixOid(CodeValueT prefixOid) {
+		this.prefixOid = prefixOid;
+	}
+
+	public CodeValueT getFacultyTypeOid() {
+		return facultyTypeOid;
+	}
+
+	public void setFacultyTypeOid(CodeValueT facultyTypeOid) {
+		this.facultyTypeOid = facultyTypeOid;
+	}
+
+	public CodeValueT getFacultyStatusOid() {
+		return facultyStatusOid;
+	}
+
+	public void setFacultyStatusOid(CodeValueT facultyStatusOid) {
+		this.facultyStatusOid = facultyStatusOid;
+	}
+
+	public CodeValueT getClassStatusOid() {
+		return classStatusOid;
+	}
+
+	public void setClassStatusOid(CodeValueT classStatusOid) {
+		this.classStatusOid = classStatusOid;
 	}
 
 	public UserT getUserOid() {

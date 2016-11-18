@@ -17,4 +17,6 @@ public interface CmsDAO {
 
 	<T> T findById(Class<?> entityClass, Long id);
 
+	<T> T singleByNamedQueryAndParams(String queryName, Map<String, Object> params);
+
 }

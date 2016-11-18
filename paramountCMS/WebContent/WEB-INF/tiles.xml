@@ -75,4 +75,19 @@
     <put-attribute name="body" value="/WEB-INF/jsp/user/faculty/list.jsp" />
   </definition>
   <!-- Faculty Module -->
+  
+   <!-- Semester Module -->
+  <definition name="semester.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Semester"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/semester/add.jsp" />
+  </definition>
+  <definition name="semester.edit" extends="initialTemplate">
+    <put-attribute name="title" value="Edit Semester"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/semester/edit.jsp" />
+  </definition>
+  <definition name="semester.list" extends="initialTemplate">
+    <put-attribute name="title" value="Semester List"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/semester/list.jsp" />
+  </definition>
+  <!-- Semester Module -->
 </tiles-definitions>

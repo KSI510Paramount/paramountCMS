@@ -9,8 +9,9 @@ import org.springframework.web.bind.support.WebRequestDataBinder;
 import org.springframework.web.context.request.WebRequest;
 
 import com.tedpros.cms.entity.DomainEntity;
+import com.tedpros.cms.util.Constants;
 
-public abstract class TopController {
+public abstract class TopController implements Constants{
 
 	public WebRequestDataBinder getDataBinder(WebRequest request, DomainEntity domainEntity){
 		WebRequestDataBinder binder = new WebRequestDataBinder(domainEntity);

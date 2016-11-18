@@ -25,7 +25,8 @@
 	<h2>Menu</h2>
 	<ul>
 		<li><a href="<c:url value="/login/getHome.do"/>">Home</a></li>
-		<!-- <li><a href="generic.html">Ipsum veroeros</a></li>
+		<li><a href="<c:url value="/logout"/>">Logout</a></li>
+		<!-- 
 		<li><a href="generic.html">Tempus etiam</a></li>
 		<li><a href="generic.html">Consequat dolor</a></li>
 		<li><a href="elements.html">Elements</a></li> -->

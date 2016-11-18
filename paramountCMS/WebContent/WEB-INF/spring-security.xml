@@ -8,21 +8,21 @@
       http://www.springframework.org/schema/beans 
       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
  
-   <http auto-config="false" >
+   <http auto-config="false" use-expressions="true">
    		<csrf disabled="true"/>
         <intercept-url pattern="/login.jsp" access="permitAll" />
         <intercept-url pattern="/assets/**" access="permitAll" />
         <intercept-url pattern="/admin**" access="hasRole('ADMIN')" />
         <intercept-url pattern="/**" access="authenticated" />
+        <intercept-url pattern="/j_acegi_security_check" access="permitAll" />
         <!-- <intercept-url pattern="/**" access="permitAll" /> --> 
-        <intercept-url pattern="/dba**" access="hasRole('ADMIN') and hasRole('DBA')" />
         <form-login  login-page="/login.jsp"
         				username-parameter="username"
         				password-parameter="password"
         			 default-target-url="/login/postLogin.do"
                      authentication-failure-url="/login.jsp?error=1" 
                      always-use-default-target="true"/>
-        <logout invalidate-session="true"/>
+        <logout invalidate-session="true" logout-success-url="/login.jsp"/>
         <session-management>
         	<concurrency-control max-sessions="10" session-registry-alias="sessionRegistery"/>
         </session-management>
@@ -30,11 +30,11 @@
     </http>
   
     <authentication-manager >
-    	<!-- <authentication-provider>
+    	<authentication-provider>
     		<jdbc-user-service data-source-ref="dataSource"
-    			users-by-username-query=""
-    			authorities-by-username-query=""/>
-    	</authentication-provider> -->
+    			users-by-username-query="select username, password, case active_flag when 'Y' then 'true' else 'false' END as enabled from cmsweb.user_t where active_flag='Y' and username = ?"
+    			authorities-by-username-query="select u.username, c.short_description as authorities from cmsweb.user_t u join cmsweb.code_value_t c on u.role_oid = c.objectid where u.active_flag='Y' and u.username = ?"/>
+    	</authentication-provider>
         <authentication-provider>
         	<user-service>
         		<user name="test" password="test" authorities="ADMIN"/>

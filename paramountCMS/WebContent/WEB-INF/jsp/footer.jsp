@@ -4,13 +4,15 @@
 		<!-- <section>
 			<h2>Get in touch</h2>
 			<form method="post" action="#">
-				<div class="field half first">
+				<div class="row 25%">
+			<div class="2u 4u(small)">
 					<input type="text" name="name" id="name" placeholder="Name" />
 				</div>
-				<div class="field half">
+				<div class="2u 4u(small)">
 					<input type="email" name="email" id="email" placeholder="Email" />
 				</div>
-				<div class="field">
+				<div class="row 25%">
+			<div class="2u 4u(small)">
 					<textarea name="message" id="message" placeholder="Message"></textarea>
 				</div>
 				<ul class="actions">

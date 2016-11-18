@@ -1,21 +1,35 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <section>
 	<form method="post" action="<c:url value="/course/postAdd.do"/>" enctype="multipart/form-data">
-		<div class="field half first">
-			<label for="code">Course Code:*</label>
-			<input type="text" id="code" name="code" required/>
+		<div class="row 25%">
+			<div class="2u 4u(small)">
+				<label for="code">Course Code:*</label>
+			</div>
+			<div class="4u 8u(small)">
+				<input type="text" id="code" name="code" required/>
+			</div>
+			<div class="2u 4u(small)">
+				<label for="title">Title:*</label>
+			</div>
+			<div class="4u 8u(small)">
+				<input type="text" id="title" name="title" required/>
+			</div>
 		</div>
-		<div class="field half">
-			<label for="title">Title:*</label>
-			<input type="text" id="title" name="title" required/>
+		<div class="row 25%">
+			<div class="2u 4u(small)">
+				<label for="description">Description:</label>
+			</div>
+			<div class="10u 8u(small)">
+				<textarea id="description" name="description" cols="15" rows="4"></textarea>
+			</div>
 		</div>
-		<div class="field">
-			<label for="description">Description:</label>
-			<textarea id="description" name="description" cols="15" rows="4"></textarea>
-		</div>
-		<div class="field">
-			<label for="syllabus">Syllabus:</label>
-			<input type="file" id="syllabus" name="syllabus" accept=".pdf,.doc,.docx"/>
+		<div class="row 25%">
+			<div class="2u 4u(small)">
+				<label for="syllabus">Syllabus:</label>
+			</div>
+			<div class="10u 8u(small)">
+				<input type="file" id="syllabus" name="syllabus" accept=".pdf,.doc,.docx" style="margin-top: 1.5em; width: 100%"/>
+			</div>
 		</div>
 		<ul class="actions">
 			<li><input type="submit" value="Add" class="special" /></li>

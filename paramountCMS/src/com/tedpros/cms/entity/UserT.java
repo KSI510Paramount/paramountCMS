@@ -5,13 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import org.apache.commons.io.FilenameUtils;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name="USER_T",schema="CMSWEB")
@@ -34,10 +35,15 @@ public class UserT extends DomainEntity{
 	private String username;
 
    @Column(name = "PASSWORD", nullable=false, length=100, columnDefinition="varchar(100)")
-   private String title;
+   private String password;
 
    @Column(name = "ACTIVE_FLAG", length=1, columnDefinition="nchar")
    private String activeFlag;
+   
+   @ManyToOne
+   @NotFound(action=NotFoundAction.IGNORE)
+   @JoinColumn(name = "ROLE_OID")
+   private CodeValueT roleOid;
    
 	public Long getObjectid() {
 		return objectid;
@@ -55,12 +61,12 @@ public class UserT extends DomainEntity{
 		this.username = username;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getActiveFlag() {
@@ -69,5 +75,13 @@ public class UserT extends DomainEntity{
 
 	public void setActiveFlag(String activeFlag) {
 		this.activeFlag = activeFlag;
+	}
+
+	public CodeValueT getRoleOid() {
+		return roleOid;
+	}
+
+	public void setRoleOid(CodeValueT roleOid) {
+		this.roleOid = roleOid;
 	}
 }

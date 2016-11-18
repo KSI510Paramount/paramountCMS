@@ -2134,9 +2134,11 @@
 
 	label {
 		display: block;
-		font-size: 0.9em;
-		font-weight: 900;
+		font-size: 1em;
+		font-weight: 700;
 		margin: 0 0 0 0;
+		margin-top: 1em;
+		color: #444;
 	}
 
 	input[type="text"],
@@ -2227,14 +2229,15 @@
 
 	input[type="checkbox"],
 	input[type="radio"] {
-		-moz-appearance: none;
+		/* -moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
-		appearance: none;
+		appearance: none; */
 		display: block;
 		float: left;
 		margin-right: -2em;
-		opacity: 0;
+		margin-top: 1.5em;
+		/* opacity: 0; */
 		width: 1em;
 		z-index: -1;
 	}
