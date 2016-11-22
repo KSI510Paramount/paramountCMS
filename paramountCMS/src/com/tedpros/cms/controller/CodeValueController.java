@@ -1,12 +1,17 @@
 package com.tedpros.cms.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
 import com.tedpros.cms.entity.CodeValueT;
@@ -21,9 +26,34 @@ public class CodeValueController extends TopController{
 
 	@RequestMapping(value = "/getList.do", method=RequestMethod.GET)
 	public String getList(WebRequest request){
-		List<CodeValueT> codeValueList = codeValueService.findAll();
-		request.setAttribute("codeValueList", codeValueList, WebRequest.SCOPE_REQUEST);
 		return "codeValue.list";
+	}
+	
+	@RequestMapping(value = "/getResultList.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String getResultList(WebRequest request){
+		List<CodeValueT> codeValueList = codeValueService.findAll();
+		Map<String, Object> jsonMap = new HashMap<>();
+		jsonMap.put("recordsTotal", codeValueList.size());
+		jsonMap.put("recordsFiltered", codeValueList.size());
+		jsonMap.put("data", getCodeValueList(codeValueList));
+		String jsonString = new JSONObject(jsonMap).toJSONString();
+		System.out.println(jsonString);
+		return jsonString;
+	}
+	
+	private List<Object> getCodeValueList(List<CodeValueT> codeValues){
+		List<Object> cv = new ArrayList<>();
+		for (CodeValueT codeValue : codeValues) {
+			Map<String, Object> valueMap = new HashMap<>();
+			valueMap.put("codeGroup", codeValue.getCodeGroup());
+			valueMap.put("code", codeValue.getCode());
+			valueMap.put("shortDescription", codeValue.getShortDescription());
+			valueMap.put("longDescription", codeValue.getLongDescription());
+			valueMap.put("objectid", codeValue.getObjectid());
+			cv.add(valueMap);
+		}
+		return cv;
 	}
 	
 	@RequestMapping(value = "/getAdd.do", method=RequestMethod.GET)

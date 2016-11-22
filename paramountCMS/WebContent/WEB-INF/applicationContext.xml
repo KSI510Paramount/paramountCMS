@@ -35,6 +35,7 @@
         </property> 
         <property name="annotatedClasses">
 	        <list>
+	        	<value>com.tedpros.cms.entity.CourseOfferT</value>
 	        	<value>com.tedpros.cms.entity.SemesterT</value>
 	        	<value>com.tedpros.cms.entity.UserT</value>
 	        	<value>com.tedpros.cms.entity.FacultyT</value>

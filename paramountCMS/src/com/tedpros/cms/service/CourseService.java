@@ -9,4 +9,6 @@ public interface CourseService extends CmsDAO{
 
 	List<CourseT> findAll();
 
+	List<CourseT> findAllWithExcludesCourse(List<Long> objectiIds);
+
 }

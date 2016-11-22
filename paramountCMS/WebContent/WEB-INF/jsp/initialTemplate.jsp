@@ -28,7 +28,10 @@
 			<script src="<c:url value="/assets/js/main.js"/>"></script>
 			<script src="<c:url value="/assets/js/validate.min.js"/>"></script>
 			<script src="<c:url value="/assets/js/jquery-ui.js"/>"></script>
-			
+
+<script type="text/javascript">
+	var contextPath = '${pageContext.request.contextPath}';
+</script>	
 	</head>
 	<body>
 		<!-- Wrapper -->

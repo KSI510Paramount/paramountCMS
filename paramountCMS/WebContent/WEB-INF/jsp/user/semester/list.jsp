@@ -21,7 +21,7 @@
 					<td><fmt:formatDate value="${semester.semEndDate}" /></td>
 					<td>
 						<a href="<c:url value="/semester/getEdit.do?objectid=${semester.objectid }"/>">[Edit]</a>&nbsp;
-						<%-- <a href="<c:url value="/semester/getDelete.do?objectid=${semester.objectid }"/>">[Delete]</a> --%>
+						<a href="<c:url value="/semester/getView.do?objectid=${semester.objectid }"/>">[View]</a>&nbsp;
 					</td>
 				</tr>
 			</c:forEach>

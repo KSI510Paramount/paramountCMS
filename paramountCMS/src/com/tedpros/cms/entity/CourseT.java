@@ -16,7 +16,8 @@ import org.apache.commons.io.FilenameUtils;
 @Entity
 @Table(name="COURSE_T",schema="CMSWEB")
 @NamedQueries({
-	@NamedQuery(name="CourseT.findAll", query="Select c from CourseT c")
+	@NamedQuery(name="CourseT.findAll", query="Select c from CourseT c"),
+	@NamedQuery(name="CourseT.findAllWithExcludesCourse", query="Select c from CourseT c where c.objectid NOT IN (:excludeCourse)")
 })
 
 public class CourseT extends DomainEntity{

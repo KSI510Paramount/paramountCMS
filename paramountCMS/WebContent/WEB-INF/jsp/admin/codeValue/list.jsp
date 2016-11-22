@@ -13,25 +13,46 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${codeValueList}" var="codeValue">
-				<tr>
-					<td><c:out value="${codeValue.codeGroup }"></c:out></td>
-					<td><c:out value="${codeValue.code }"></c:out></td>
-					<td><c:out value="${codeValue.shortDescription }"></c:out></td>
-					<td><c:out value="${codeValue.longDescription }"></c:out></td>
-					<td>
-						<a href="<c:url value="/codeValue/getEdit.do?objectid=${codeValue.objectid }"/>">[Edit]</a>&nbsp;
-						<a href="<c:url value="/codeValue/getDelete.do?objectid=${codeValue.objectid }"/>">[Delete]</a>
-					</td>
-				</tr>
-			</c:forEach>
 		</tbody>
 	</table>
 </section>
 <script>
 (function($){
 	$(document).ready(function() {
-		$('#codeValueTable').DataTable();
+		$('#codeValueTable').DataTable({
+			"responsive": true,
+			"processing": true,
+			"columns": [
+				{"data":"codeGroup"},
+				{"data":"code"},
+				{"data":"shortDescription"},
+				{"data":"longDescription"},
+			],
+			"columnDefs":[
+			  	{
+				  	"targets": 4,
+				  	"data": "objectid",
+				  	"orderable": false,
+				  	"render": function(data){
+					  	var span = $("<span/>");
+					  	var href = $("<a/>")
+					  	href.attr("href", contextPath + "/codeValue/getEdit.do?objectid=" + data);
+					  	href.append("[Edit]");
+					  	span.append(href);
+
+					  	href = $("<a/>")
+					  	href.attr("href", contextPath + "/codeValue/getDelete.do?objectid" + data);
+					  	href.append("[Delete]");
+					  	span.append(href);
+					  	
+					  	return span.html();
+					 }
+				}
+			],
+			"ajax":{
+				"url":contextPath+"/rest/codeValue/getResultList.do"
+			}
+		});
 	} );
 })(jQuery); 
 
