@@ -300,10 +300,15 @@ public class CodeValueTag extends RequestContextAwareTag {
 		}
 		
 		buffer.append(" code=\"" + codeValue.getCode() + "\" ");
+		buffer.append(" longDescription=\"" + codeValue.getLongDescription() + "\" ");
+		buffer.append(" shortDescription=\"" + codeValue.getShortDescription() + "\" ");
 		buffer.append(">");
 		if(StringUtils.isEmpty(this.getDropdownText()) 
 				&& this.getLongDescription().equalsIgnoreCase("longDescription")){
 			buffer.append(codeValue.getLongDescription());
+		}else if(StringUtils.isEmpty(this.getDropdownText()) 
+				&& this.getLongDescription().equalsIgnoreCase("code")){
+			buffer.append(codeValue.getCode());
 		}else{
 			buffer.append(codeValue.getShortDescription());
 		}

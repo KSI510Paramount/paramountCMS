@@ -9,4 +9,6 @@ public interface StudentService extends CmsDAO{
 
 	List<StudentT> findAll();
 
+	List<StudentT> findAllWithExcludesStudents(List<Long> excludeStudents);
+
 }

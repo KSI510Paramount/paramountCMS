@@ -20,7 +20,7 @@
 			<div class="2u 4u(small)">
 				<label for="locationOid">Location:*</label>
 			</div>
-			<div class="4u 8u(small)">
+			<div class="10u 8u(small)">
 				<code:codevalue id="locationOid" name="locationOid" codegroup="LOCATION" requried="true" ></code:codevalue>
 			</div>
 		</div>

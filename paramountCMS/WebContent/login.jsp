@@ -4,6 +4,8 @@
 <html>
 	<head>
 		<title>Course Management</title>
+		<link rel="icon" type="image/png" href="<c:url value="/assets/images/favicon-32x32.png"/>" sizes="32x32" />
+		<link rel="icon" type="image/png" href="<c:url value="/assets/images/favicon-16x16.png"/>" sizes="16x16" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="<c:url value="/assets/js/ie/html5shiv.js"/>"></script><![endif]-->
@@ -17,10 +19,10 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header" class="container 125%">
+					<header id="header" class="container 125%" style="padding: 1em 0 2em 2em;">
 
 						<!-- Logo -->
-							<a href="#" class="logo">
+							<a href="#" class="logo" style="margin: 0 0 2em 0;">
 								<span class="symbol"><img src="<c:url value="/assets/images/logo.png"/>" alt="" /></span><span class="title">Course Management System</span>
 							</a>
 

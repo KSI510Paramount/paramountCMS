@@ -9,6 +9,9 @@
 <html>
 	<head>
 		<title>Course Management</title>
+		<link rel="icon" type="image/png" href="<c:url value="/assets/images/favicon-32x32.png"/>" sizes="32x32" />
+		<link rel="icon" type="image/png" href="<c:url value="/assets/images/favicon-16x16.png"/>" sizes="16x16" />
+		
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="<c:url value="/assets/js/ie/html5shiv.js"/>"></script><![endif]-->
@@ -26,8 +29,8 @@
 			<script src="<c:url value="/assets/js/util.js"/>"></script>
 			<!--[if lte IE 8]><script src="<c:url value="/assets/js/ie/respond.min.js"/>"></script><![endif]-->
 			<script src="<c:url value="/assets/js/main.js"/>"></script>
-			<script src="<c:url value="/assets/js/validate.min.js"/>"></script>
 			<script src="<c:url value="/assets/js/jquery-ui.js"/>"></script>
+			<script src="<c:url value="/assets/js/validate.min.js"/>"></script>
 
 <script type="text/javascript">
 	var contextPath = '${pageContext.request.contextPath}';

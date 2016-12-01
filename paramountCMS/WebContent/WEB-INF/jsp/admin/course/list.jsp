@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <section>
-<a class="addLink" href="<c:url value="/course/getAdd.do"/>">[Add]</a>
+<a class="addLink" href="<c:url value="/course/getAdd.do"/>">[Add Course]</a>
 	<table id="courseTable" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>

@@ -107,4 +107,41 @@ public class CodeValueController extends TopController{
 		return "redirect:/codeValue/getList.do";
 	}
 	
+	@RequestMapping(value = "/assignment/getAdd.do", method=RequestMethod.GET)
+	public String getAddAssignment(WebRequest request){
+		request.setAttribute("courseOfferOid", request.getParameter("objectid"), WebRequest.SCOPE_REQUEST);
+		return "codeValue.assignment.add";
+	}
+	
+	@RequestMapping(value = "/assignment/postAdd.do", method=RequestMethod.POST)
+	public String postAddAssignment(WebRequest request){
+		String courseOfferOid = request.getParameter("objectid");
+		String assignmentTitle = request.getParameter("assignmentTitle");
+		if(StringUtils.isNotBlank(assignmentTitle)){
+			CodeValueT codeValue = new CodeValueT();
+			codeValue.setCodeGroup("ASSIGNMENT");
+			codeValue.setLongDescription(assignmentTitle);
+			codeValue.setShortDescription(assignmentTitle);
+			codeValue.setCode(buildCode(assignmentTitle));
+			codeValueService.addCodeValue(codeValue);
+		}
+		
+		return "redirect:/grade/getView.do?objectid="+courseOfferOid;
+	}
+	
+	private String buildCode(String title){
+		StringBuffer sb = new StringBuffer(); 
+		String[] strings = title.toUpperCase().split(" ");
+		if(strings != null && strings.length > 1){
+			for (String s : strings) {
+				for(int i = 0; i < s.length(); i++){
+					sb.append(s.charAt(i));
+					if(i == 1)break;
+				}
+			}
+		}else{
+			sb.append(title);
+		}
+		return sb.toString();
+	}
 }

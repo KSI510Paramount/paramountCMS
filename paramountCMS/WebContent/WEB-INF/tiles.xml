@@ -16,6 +16,11 @@
     <put-attribute name="body" value="/WEB-INF/jsp/home/home.jsp" />
   </definition>
   
+  <definition name="login.admin" extends="initialTemplate">
+    <put-attribute name="title" value="Admin"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/home/admin.jsp" />
+  </definition>
+  
   <!-- CodeValue Module -->
   <definition name="codeValue.add" extends="initialTemplate">
     <put-attribute name="title" value="Add Code Value"/>
@@ -28,6 +33,10 @@
   <definition name="codeValue.list" extends="initialTemplate">
     <put-attribute name="title" value="Code Value List"/>
     <put-attribute name="body" value="/WEB-INF/jsp/admin/codeValue/list.jsp" />
+  </definition>
+  <definition name="codeValue.assignment.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Assignment"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/assignment/add.jsp" />
   </definition>
   <!-- CodeValue Module -->
   
@@ -75,6 +84,71 @@
     <put-attribute name="body" value="/WEB-INF/jsp/user/faculty/list.jsp" />
   </definition>
   <!-- Faculty Module -->
+  
+  <!-- Enrollment Module -->
+  <definition name="enroll.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Enrollment"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/courseEnrollment/add.jsp" />
+  </definition>
+  <definition name="enroll.view" extends="initialTemplate">
+    <put-attribute name="title" value="View Enrollment"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/courseEnrollment/view.jsp" />
+  </definition>
+  <definition name="enroll.edit" extends="initialTemplate">
+    <put-attribute name="title" value="Edit Enrollment"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/courseEnrollment/edit.jsp" />
+  </definition>
+  <definition name="enroll.list" extends="initialTemplate">
+    <put-attribute name="title" value="Course Enrolled List"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/courseEnrollment/list.jsp" />
+  </definition>
+  <!-- Enrollment Module -->
+  
+  <!-- Attendance Module -->
+  <definition name="attendance.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Attendance"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/attendance/add.jsp" />
+  </definition>
+  <definition name="attendance.view" extends="initialTemplate">
+    <put-attribute name="title" value="View Attendance"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/attendance/view.jsp" />
+  </definition>
+  <definition name="attendance.edit" extends="initialTemplate">
+    <put-attribute name="title" value="View Student"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/attendance/viewStudent.jsp" />
+  </definition>
+  <definition name="attendance.list" extends="initialTemplate">
+    <put-attribute name="title" value="Course Enrolled List"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/attendance/list.jsp" />
+  </definition>
+  <!-- Attendance Module -->
+  
+  <!-- Grade Module -->
+  <definition name="grade.add" extends="initialTemplate">
+    <put-attribute name="title" value="Add Grade"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/grade/add.jsp" />
+  </definition>
+  <definition name="grade.view" extends="initialTemplate">
+    <put-attribute name="title" value="View Grade"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/grade/view.jsp" />
+  </definition>
+  <definition name="grade.edit" extends="initialTemplate">
+    <put-attribute name="title" value="View Student"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/grade/viewStudent.jsp" />
+  </definition>
+  <definition name="grade.list" extends="initialTemplate">
+    <put-attribute name="title" value="Course Enrolled List"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/grade/list.jsp" />
+  </definition>
+  <definition name="grade.viewAssignments" extends="initialTemplate">
+    <put-attribute name="title" value="View Assignments"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/grade/viewAssignments.jsp" />
+  </definition>
+  <definition name="grade.viewStudents" extends="initialTemplate">
+    <put-attribute name="title" value="View Grades"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/grade/viewGradedStudents.jsp" />
+  </definition>
+  <!-- Grade Module -->
   
    <!-- Semester Module -->
   <definition name="semester.add" extends="initialTemplate">

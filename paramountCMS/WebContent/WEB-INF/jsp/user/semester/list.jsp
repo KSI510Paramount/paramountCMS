@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <section>
-<a class="addLink" href="<c:url value="/semester/getAdd.do"/>">[Add]</a>
+<a class="addLink" href="<c:url value="/semester/getAdd.do"/>">[Add Semester]</a>
 	<table id="studentTable" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>
@@ -20,8 +20,8 @@
 					<td><fmt:formatDate value="${semester.semStartDate}" /></td>
 					<td><fmt:formatDate value="${semester.semEndDate}" /></td>
 					<td>
-						<a href="<c:url value="/semester/getEdit.do?objectid=${semester.objectid }"/>">[Edit]</a>&nbsp;
-						<a href="<c:url value="/semester/getView.do?objectid=${semester.objectid }"/>">[View]</a>&nbsp;
+						<a href="<c:url value="/semester/getEdit.do?objectid=${semester.objectid }"/>">[Edit Semester]</a>&nbsp;
+						<a href="<c:url value="/semester/getView.do?objectid=${semester.objectid }"/>">[Add Course Offer]</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -31,7 +31,12 @@
 <script>
 (function($){
 	$(document).ready(function() {
-		$('#studentTable').DataTable();
+		$('#studentTable').DataTable({
+			"bLengthChange": false,
+		    "bFilter": false,
+		    "responsive": true,
+			"processing": true,
+		});
 	} );
 })(jQuery); 
 

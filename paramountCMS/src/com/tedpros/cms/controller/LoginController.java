@@ -27,6 +27,11 @@ public class LoginController extends TopController{
 		return "login.home";
 	}
 	
+	@RequestMapping(value = "/getAdmin.do")
+	public String getAdmin(WebRequest request){
+		return "login.admin";
+	}
+	
 	@RequestMapping("/getAccessDenied.do")
 	public String getAccessDenied(WebRequest request){
 		System.out.println(getUsername());

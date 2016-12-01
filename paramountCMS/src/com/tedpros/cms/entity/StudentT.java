@@ -23,7 +23,8 @@ import com.tedpros.cms.util.Utility;
 @Entity
 @Table(name="STUDENT_T",schema="CMSWEB")
 @NamedQueries({
-	@NamedQuery(name="StudentT.findAll", query="Select s from StudentT s")
+	@NamedQuery(name="StudentT.findAll", query="Select s from StudentT s"),
+	@NamedQuery(name="StudentT.findAllWithExcludesStudents", query="Select s from StudentT s Where s.objectid NOT IN (:excludeStudents)")
 })
 
 public class StudentT extends DomainEntity{
