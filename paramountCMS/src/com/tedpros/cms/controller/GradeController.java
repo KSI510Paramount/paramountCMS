@@ -176,7 +176,7 @@ public class GradeController extends TopController{
 			    	}
 					String assignmentOid = request.getParameter("assignmentOid");
 			    	if(StringUtils.isNotBlank(assignmentOid)){
-			    		CodeValueT assignmentCode = enrollmentService.findById(StudentT.class, Long.valueOf(assignmentOid));
+			    		CodeValueT assignmentCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(assignmentOid));
 			    		if(assignmentCode != null){
 			    			grade.setAssignmentOid(assignmentCode);;
 			    		}
@@ -184,7 +184,7 @@ public class GradeController extends TopController{
 			    	
 			    	String gradeTypeOid = request.getParameter("gradeTypeOid");
 			    	if(StringUtils.isNotBlank(gradeTypeOid)){
-			    		CodeValueT gradeTypeCode = enrollmentService.findById(StudentT.class, Long.valueOf(gradeTypeOid));
+			    		CodeValueT gradeTypeCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(gradeTypeOid));
 			    		if(gradeTypeCode != null){
 			    			grade.setGradeTypeOid(gradeTypeCode);
 			    			grade.setLetterGrade(gradeTypeCode.getCode());
