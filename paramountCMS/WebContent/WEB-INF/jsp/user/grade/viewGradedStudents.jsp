@@ -23,7 +23,7 @@
 				<th>Class Status</th>
 				<th>Actual Point</th>
 				<th>Grade</th>
-				<!-- <th></th> -->
+				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,6 +37,9 @@
 					<td><c:out value="${grade.enrollmentOid.studentOid.classStatusOid.shortDescription }"></c:out></td>
 					<td><fmt:formatNumber type="number" maxFractionDigits="2" value="${grade.actualPoint }" /></td>
 					<td><c:out value="${grade.letterGrade }"></c:out></td>
+					<td>
+						<a href="<c:url value="/grade/getEditGrade.do?objectid=${grade.objectid }"/>">[Edit Grade]</a>&nbsp;
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -52,7 +55,7 @@
 		
 
 		$( "#cancel" ).click(function() {
-			window.location.href='<c:url value="/grade/getList.do"/>';
+			window.location.href='<c:url value="/grade/getViewAssignments.do?objectid=${courseOfferOid}"/>';
 		});
 		
 	} );

@@ -60,6 +60,9 @@ public class GradeT extends DomainEntity{
 	@Column(name = "REMARKS")
 	private String remarks;
 
+	@Column(name = "EXTENDED_GRADE")
+	private String extendedGrade = "N";
+	
 	public Long getObjectid() {
 		return objectid;
 	}
@@ -114,5 +117,13 @@ public class GradeT extends DomainEntity{
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+
+	public String getExtendedGrade() {
+		return extendedGrade;
+	}
+
+	public void setExtendedGrade(String extendedGrade) {
+		this.extendedGrade = extendedGrade;
 	}
 }

@@ -72,7 +72,7 @@
 				<label for="username">Username:</label>
 			</div>
 			<div class="4u 8u(small)">
-				<input type="text" id="username" name="username" disabled="disabled"/>
+				<input type="text" id="username" name="username" disabled="disabled" value="${faculty.userOid.username }"/>
 			</div>
 			<div class="2u 4u(small)">
 				<label for="activeFlag">Active Flag:</label>

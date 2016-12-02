@@ -17,7 +17,7 @@
 			<img src='<c:url value="/assets/images/enroll.jpg" />' alt="" />
 		</span>
 		
-		<a href="<c:url value="/enroll/getList.do"/>">
+		<a href="<c:url value="/faculty/getList.do"/>">
 			<h2>Manage Faculty</h2>
 			<div class="content">
 				<p>Add Faculty Memebers with User Id</p>
@@ -29,7 +29,7 @@
 			<img src='<c:url value="/assets/images/attend.jpg" />' alt="" />
 		</span>
 		
-		<a href="<c:url value="/attendance/getList.do"/>">
+		<a href="<c:url value="/student/getList.do"/>">
 			<h2>Manage Student</h2>
 			<div class="content">
 				<p>Manage Student Records</p>

@@ -25,7 +25,6 @@ import com.tedpros.cms.entity.CourseOfferT;
 import com.tedpros.cms.entity.EnrollmentT;
 import com.tedpros.cms.entity.FacultyT;
 import com.tedpros.cms.entity.GradeT;
-import com.tedpros.cms.entity.StudentT;
 import com.tedpros.cms.service.CourseOfferService;
 import com.tedpros.cms.service.EnrollmentService;
 import com.tedpros.cms.service.GradeService;
@@ -140,6 +139,7 @@ public class GradeController extends TopController{
 	@RequestMapping(value = "/getViewStudentGrade.do", method=RequestMethod.GET)
 	public String getViewStudentGrade(WebRequest request){
 		String assignmentOid= request.getParameter("objectid");
+		request.setAttribute("courseOfferOid", request.getParameter("courseOfferOid"), WebRequest.SCOPE_REQUEST);
 		if(StringUtils.isNotBlank(assignmentOid)){
 			List<GradeT> gradeList = gradeService.findByAssingmentOid(Long.valueOf(assignmentOid));
 			request.setAttribute("gradeList", gradeList, WebRequest.SCOPE_REQUEST);
@@ -171,7 +171,7 @@ public class GradeController extends TopController{
 				for (EnrollmentT enrollment : enrollmentList) {
 					GradeT grade = new GradeT();
 					String actualPoint = request.getParameter("actualPoint");
-			    	if(StringUtils.isNotBlank(actualPoint) && StringUtils.isNumeric(actualPoint)){
+			    	if(StringUtils.isNotBlank(actualPoint)){
 			    		grade.setActualPoint(new BigDecimal(actualPoint).setScale(3, RoundingMode.HALF_UP));
 			    	}
 					String assignmentOid = request.getParameter("assignmentOid");
@@ -181,15 +181,25 @@ public class GradeController extends TopController{
 			    			grade.setAssignmentOid(assignmentCode);;
 			    		}
 			    	}
-			    	
-			    	String gradeTypeOid = request.getParameter("gradeTypeOid");
-			    	if(StringUtils.isNotBlank(gradeTypeOid)){
-			    		CodeValueT gradeTypeCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(gradeTypeOid));
-			    		if(gradeTypeCode != null){
-			    			grade.setGradeTypeOid(gradeTypeCode);
-			    			grade.setLetterGrade(gradeTypeCode.getCode());
-			    		}
+			    	String extendedGrade = request.getParameter("extendedGrade");
+			    	CodeValueT gradeTypeCode = null;
+			    	if(StringUtils.isNotBlank(extendedGrade) && extendedGrade.equalsIgnoreCase("Y")){
+			    		String extendedGradeTypeOid = request.getParameter("extendedGradeTypeOid");
+				    	if(StringUtils.isNotBlank(extendedGradeTypeOid)){
+				    		gradeTypeCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(extendedGradeTypeOid));
+				    	}
+				    	grade.setExtendedGrade(extendedGrade);
+			    	}else{
+				    	String gradeTypeOid = request.getParameter("gradeTypeOid");
+				    	if(StringUtils.isNotBlank(gradeTypeOid)){
+				    		gradeTypeCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(gradeTypeOid));
+				    	}
+				    	grade.setExtendedGrade("N");
 			    	}
+			    	if(gradeTypeCode != null){
+		    			grade.setGradeTypeOid(gradeTypeCode);
+		    			grade.setLetterGrade(gradeTypeCode.getCode());
+		    		}
 			    	grade.setEnrollmentOid(enrollment);
 			    	courseOfferOid = enrollment.getCourseOfferOid().getObjectid();
 			    	gradeService.persist(grade);
@@ -200,6 +210,64 @@ public class GradeController extends TopController{
 			e.printStackTrace();
 		}
 		return "redirect:/grade/getView.do?objectid="+courseOfferOid;
+	}
+	
+	@RequestMapping(value = "/getEditGrade.do", method=RequestMethod.GET)
+	public String getGradeGrade(WebRequest request, HttpServletRequest httpRequest){
+		String gradeOid = request.getParameter("objectid");
+		if(StringUtils.isNotBlank(gradeOid)){
+			GradeT grade = gradeService.findById(GradeT.class, Long.valueOf(gradeOid));
+			request.setAttribute("grade", grade, WebRequest.SCOPE_REQUEST);
+		}
+		return "grade.editGrade";
+	}
+		
+	@RequestMapping(value = "/postEditGrade.do", method=RequestMethod.POST)
+	public String postEditGrade(WebRequest request, HttpServletRequest httpRequest){
+		Long courseOfferOid = null;
+		try {
+				String gradeOid = request.getParameter("objectid");
+				if(StringUtils.isNotBlank(gradeOid)){
+					GradeT grade = gradeService.findById(GradeT.class, Long.valueOf(gradeOid));
+					String actualPoint = request.getParameter("actualPoint");
+			    	if(StringUtils.isNotBlank(actualPoint)){
+			    		grade.setActualPoint(new BigDecimal(actualPoint).setScale(3, RoundingMode.HALF_UP));
+			    	}
+			    	String assignmentOid = request.getParameter("assignmentOid");					
+			    	if(StringUtils.isNotBlank(assignmentOid)){
+			    		CodeValueT assignmentCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(assignmentOid));
+			    		if(assignmentCode != null){
+			    			grade.setAssignmentOid(assignmentCode);;
+			    		}
+			    	}
+			    	
+			    	String extendedGrade = request.getParameter("extendedGrade");
+			    	CodeValueT gradeTypeCode = null;
+			    	if(StringUtils.isNotBlank(extendedGrade) && extendedGrade.equalsIgnoreCase("Y")){
+			    		String extendedGradeTypeOid = request.getParameter("extendedGradeTypeOid");
+				    	if(StringUtils.isNotBlank(extendedGradeTypeOid)){
+				    		gradeTypeCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(extendedGradeTypeOid));
+				    	}
+				    	grade.setExtendedGrade(extendedGrade);
+			    	}else{
+				    	String gradeTypeOid = request.getParameter("gradeTypeOid");
+				    	if(StringUtils.isNotBlank(gradeTypeOid)){
+				    		gradeTypeCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(gradeTypeOid));
+				    	}
+				    	grade.setExtendedGrade("N");
+			    	}
+			    	if(gradeTypeCode != null){
+		    			grade.setGradeTypeOid(gradeTypeCode);
+		    			grade.setLetterGrade(gradeTypeCode.getCode());
+		    		}
+			    	courseOfferOid = grade.getEnrollmentOid().getCourseOfferOid().getObjectid();
+			    	gradeService.update(grade);
+				}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/grade/getViewAssignments.do?objectid="+courseOfferOid;
 	}
 	
 	@RequestMapping(value = "/postComments.do", method=RequestMethod.POST)

@@ -27,10 +27,10 @@
 	</div>
 	<div class="row 25%">
 		<div class="2u 4u(small)">
-			<label for="comments" style="margin-top: 2em;">Comment:</label>
+			<label for="comments">Comment:</label>
 		</div>
 		<div class="10u 8u(small)">
-			<textarea rows="3" cols="5" name="comments" id="comments"></textarea>
+			<input type="text" id="comments" name="comments" />
 		</div>
 	</div>
 	<ul class="actions">
@@ -40,27 +40,27 @@
 	<table id="enrollmentTable" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>
-				<th></th>
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Gender</th>
 				<th>Type</th>
 				<th>Status</th>
 				<th>Class Status</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${enrollmentList}" var="enrollment">
 				<tr>
-					<td>
-						<input style="margin-top: .8em;" type="checkbox" name="enrollOids" id="enrollOids" value="${enrollment.objectid }" required title="Please select at least one Student."/>
-					</td>
 					<td><c:out value="${enrollment.studentOid.firstName }"></c:out></td>
 					<td><c:out value="${enrollment.studentOid.lastName }"></c:out></td>
 					<td><c:out value="${enrollment.studentOid.genderOid.shortDescription }"></c:out></td>
 					<td><c:out value="${enrollment.studentOid.studentTypeOid.shortDescription}" /></td>
 					<td><c:out value="${enrollment.studentOid.studentStatusOid.shortDescription}" /></td>
 					<td><c:out value="${enrollment.studentOid.classStatusOid.shortDescription}" /></td>
+					<td>
+						<input style="margin-top: .8em;" type="checkbox" name="enrollOids" id="enrollOids" value="${enrollment.objectid }" required title="Please select at least one Student."/>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

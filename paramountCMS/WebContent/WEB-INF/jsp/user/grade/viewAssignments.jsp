@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@ taglib uri="/WEB-INF/tld/CodeValue.tld" prefix="code" %>
 <section>
-	<form method="post" action="<c:url value="/enroll/postEditEnrollment.do?objectid=${enrolled.objectid }"/>">
+	<form method="post" >
 		<div class="row 25%">
 			<div class="2u 4u(small)">
 				<label>Semester Year:</label>
@@ -29,8 +29,8 @@
 	<table id="courseEnrollmentTable" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>
-				<th style="width: 90%">Assignments</th>
-				<th style="width: 10%">Action</th>
+				<th style="width: 80%">Assignments</th>
+				<th style="width: 20%">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -38,7 +38,7 @@
 				<tr>
 					<td><c:out value="${assignment.shortDescription}"></c:out></td>
 					<td>
-						<a href="<c:url value="/grade/getViewStudentGrade.do?objectid=${assignment.objectid }"/>">[View Grade]</a>&nbsp;
+						<a href="<c:url value="/grade/getViewStudentGrade.do?objectid=${assignment.objectid }&courseOfferOid=${courseOffer.objectid }"/>">[View Student Grades]</a>&nbsp;
 					</td>
 				</tr>
 			</c:forEach>

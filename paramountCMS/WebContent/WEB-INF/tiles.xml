@@ -148,6 +148,10 @@
     <put-attribute name="title" value="View Grades"/>
     <put-attribute name="body" value="/WEB-INF/jsp/user/grade/viewGradedStudents.jsp" />
   </definition>
+  <definition name="grade.editGrade" extends="initialTemplate">
+    <put-attribute name="title" value="View Grades"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/grade/editGrade.jsp" />
+  </definition>
   <!-- Grade Module -->
   
    <!-- Semester Module -->

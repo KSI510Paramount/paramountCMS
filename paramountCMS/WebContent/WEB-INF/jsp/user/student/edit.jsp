@@ -8,7 +8,7 @@
 				<label for="sid">Student ID:</label>
 			</div>
 			<div class="10u 8u(small)">
-				<input type="text" id="sid" name="sid" value="${student.studentId }"/>
+				<input type="text" id="sid" name="sid" value="${student.studentId }" disabled="disabled"/>
 			</div>
 		</div>
 		<div class="row 25%">

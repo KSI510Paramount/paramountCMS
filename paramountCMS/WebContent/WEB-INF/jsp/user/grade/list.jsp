@@ -36,7 +36,11 @@
 <script>
 (function($){
 	$(document).ready(function() {
-		$('#courseEnrollmentTable').DataTable();
+		$('#courseEnrollmentTable').DataTable({
+			"bLengthChange": false,
+		    "bFilter": false,
+		    "responsive": true
+		 });
 	} );
 })(jQuery); 
 
