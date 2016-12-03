@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 
+import com.tedpros.cms.entity.CodeValueT;
 import com.tedpros.cms.entity.CourseOfferT;
 import com.tedpros.cms.entity.EnrollmentT;
 import com.tedpros.cms.entity.FacultyT;
 import com.tedpros.cms.entity.StudentT;
+import com.tedpros.cms.service.CodeValueService;
 import com.tedpros.cms.service.CourseOfferService;
 import com.tedpros.cms.service.EnrollmentService;
 import com.tedpros.cms.service.StudentService;
@@ -34,6 +36,9 @@ public class EnrollmentController extends TopController{
 	
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
+	private CodeValueService codeValueService;
 	
 	@RequestMapping(value = "/getList.do", method=RequestMethod.GET)
 	public String getList(WebRequest request){
@@ -108,6 +113,10 @@ public class EnrollmentController extends TopController{
 					StudentT student = enrollService.findById(StudentT.class, Long.valueOf(studentOid));
 					enrollment.setStudentOid(student);
 				}
+				CodeValueT completionStatusCode = codeValueService.findByCodeGroupAndCode("COMPLETIONSTATUS", "INPROGRESS");
+				if(completionStatusCode != null){
+					enrollment.setCompletionStatusOid(completionStatusCode);
+				}
 				enrollService.persist(enrollment);
 			}
 		} catch (Exception e) {
@@ -168,11 +177,29 @@ public class EnrollmentController extends TopController{
 	
 	@RequestMapping(value = "/getDeletEnrollment.do", method=RequestMethod.GET)
 	public String getDeletEnrollment(WebRequest request){
-		String courseOfferOid= request.getParameter("objectid");
-		if(StringUtils.isNotBlank(courseOfferOid)){
-			EnrollmentT enroll = enrollService.findById(EnrollmentT.class, Long.valueOf(courseOfferOid));
+		String enrollmentOid= request.getParameter("objectid");
+		if(StringUtils.isNotBlank(enrollmentOid)){
+			EnrollmentT enroll = enrollService.findById(EnrollmentT.class, Long.valueOf(enrollmentOid));
 			if(enroll != null){
 				enrollService.delete(enroll);
+			}
+		}
+		return "redirect:/enroll/getView.do?objectid="+enrollmentOid;
+	}
+	
+	@RequestMapping(value = "/getWithdrawEnrollment.do", method=RequestMethod.GET)
+	public String getWithdrawEnrollment(WebRequest request){
+		String enrollmentOid= request.getParameter("objectid");
+		Long courseOfferOid = null;
+		if(StringUtils.isNotBlank(enrollmentOid)){
+			EnrollmentT enroll = enrollService.findById(EnrollmentT.class, Long.valueOf(enrollmentOid));
+			if(enroll != null){
+				courseOfferOid = enroll.getCourseOfferOid().getObjectid();
+				CodeValueT completionStatusCode = codeValueService.findByCodeGroupAndCode("COMPLETIONSTATUS", "WITHDRAW");
+				if(completionStatusCode != null){
+					enroll.setCompletionStatusOid(completionStatusCode);
+				}
+				enrollService.update(enroll);
 			}
 		}
 		return "redirect:/enroll/getView.do?objectid="+courseOfferOid;

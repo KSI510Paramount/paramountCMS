@@ -32,6 +32,15 @@ public class CodeValueServiceImpl extends CmsDAOImpl implements CodeValueService
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public CodeValueT findByCodeGroupAndCode(String codeGroup, String code){
+		Map<String, Object> params= new HashMap<>();
+		params.put("codeGroup", codeGroup);
+		params.put("code", code);
+		return (CodeValueT) singleByNamedQueryAndParams("CodeValueT.findByCodeGroupAndCode", params);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<CodeValueT> findAll(){
 		return (List<CodeValueT>) listByNamedQuery("CodeValueT.findAll");
 	}

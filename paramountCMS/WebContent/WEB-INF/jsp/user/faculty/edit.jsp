@@ -8,7 +8,7 @@
 				<label for="facultyPrefixOid">Prefix:</label>
 			</div>
 			<div class="10u 8u(small)">
-				<code:codevalue id="facultyPrefixOid" name="facultyPrefixOid" codegroup="PREFIX" requried="false" value="${faculty.objectid }"></code:codevalue>
+				<code:codevalue id="facultyPrefixOid" name="facultyPrefixOid" codegroup="PREFIX" requried="false" value="${faculty.prefixOid }"></code:codevalue>
 			</div>
 		</div>
 		<div class="row 25%">

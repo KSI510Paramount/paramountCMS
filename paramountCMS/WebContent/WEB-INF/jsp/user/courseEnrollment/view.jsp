@@ -22,6 +22,7 @@
 				<th>Type</th>
 				<th>Status</th>
 				<th>Class Status</th>
+				<th>Completion Status</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -34,10 +35,13 @@
 					<td><c:out value="${enrollment.studentOid.studentTypeOid.shortDescription}" /></td>
 					<td><c:out value="${enrollment.studentOid.studentStatusOid.shortDescription}" /></td>
 					<td><c:out value="${enrollment.studentOid.classStatusOid.shortDescription}" /></td>
+					<td><c:out value="${enrollment.completionStatusOid.shortDescription}" /></td>
 					<td>
 						<a href="<c:url value="/enroll/getEditEnrollment.do?objectid=${enrollment.objectid }"/>">[Update]</a>&nbsp;
 						<a href="<c:url value="/enroll/getDeletEnrollment.do?objectid=${enrollment.objectid }"/>">[Remove]</a>
-						<a href="<c:url value="/enroll/.do?objectid=${enrollment.objectid }"/>">[Withdraw]</a>
+						<c:if test="${enrollment.completionStatusOid.code eq 'INPROGRESS' }">
+							<a href="<c:url value="/enroll/getWithdrawEnrollment.do?objectid=${enrollment.objectid }"/>">[Withdraw]</a>
+						</c:if>
 					</td>
 				</tr>
 			</c:forEach>

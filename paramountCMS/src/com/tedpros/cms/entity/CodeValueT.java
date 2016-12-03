@@ -17,7 +17,8 @@ import javax.persistence.TemporalType;
 @Table(name="CODE_VALUE_T",schema="CMSWEB")
 @NamedQueries({
 	@NamedQuery(name="CodeValueT.findAll", query="Select c from CodeValueT c"),
-	@NamedQuery(name="CodeValueT.findByCodeGroup", query="Select c from CodeValueT c WHERE c.codeGroup = :codeGroup")
+	@NamedQuery(name="CodeValueT.findByCodeGroup", query="Select c from CodeValueT c WHERE c.codeGroup = :codeGroup"),
+	@NamedQuery(name="CodeValueT.findByCodeGroupAndCode", query="Select c from CodeValueT c WHERE c.codeGroup = :codeGroup AND c.code = :code")
 })
 
 public class CodeValueT extends DomainEntity{

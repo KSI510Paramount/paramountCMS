@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <section class="tiles">
 	<article class="style1">
-		<span class="image">
-			<img src='<c:url value="/assets/images/pic01.jpg" />' alt="" />
+		<span class="image" style="height: 258px;">
+			<img src='<c:url value="/assets/images/codeValue.jpg" />' alt="" />
 		</span>
 		
 		<a href="<c:url value="/codeValue/getList.do"/>">
@@ -13,8 +13,8 @@
 		</a>
 	</article>
 	<article class="style2">
-		<span class="image">
-			<img src='<c:url value="/assets/images/enroll.jpg" />' alt="" />
+		<span class="image" style="height: 258px;">
+			<img src='<c:url value="/assets/images/faculty.jpg" />' alt="" />
 		</span>
 		
 		<a href="<c:url value="/faculty/getList.do"/>">
@@ -26,11 +26,11 @@
 	</article>
 	<article class="style5">
 		<span class="image" style="height: 258px;">
-			<img src='<c:url value="/assets/images/attend.jpg" />' alt="" />
+			<img src='<c:url value="/assets/images/students.jpg" />' alt="" />
 		</span>
 		
 		<a href="<c:url value="/student/getList.do"/>">
-			<h2>Manage Student</h2>
+			<h2>Manage Students</h2>
 			<div class="content">
 				<p>Manage Student Records</p>
 			</div>

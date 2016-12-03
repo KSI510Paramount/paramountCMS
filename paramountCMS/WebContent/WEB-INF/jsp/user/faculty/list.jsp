@@ -5,6 +5,7 @@
 	<table id="studentTable" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>
+				<th>Title</th>
 				<th>First Name</th>
 				<th>Middle Name</th>
 				<th>Last Name</th>
@@ -16,6 +17,7 @@
 		<tbody>
 			<c:forEach items="${facultyList}" var="faculty">
 				<tr>
+					<td><c:out value="${faculty.prefixOid.shortDescription }"></c:out></td>
 					<td><c:out value="${faculty.firstName }"></c:out></td>
 					<td><c:out value="${faculty.middleName }"></c:out></td>
 					<td><c:out value="${faculty.lastName }"></c:out></td>

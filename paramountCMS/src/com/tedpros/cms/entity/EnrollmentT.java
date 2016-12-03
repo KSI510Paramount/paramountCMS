@@ -48,6 +48,11 @@ public class EnrollmentT extends DomainEntity{
 	@JoinColumn(name = "STUDENT_OID")
 	private StudentT studentOid;
 	
+	@ManyToOne
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(name = "COMPLETION_STATUS_OID")
+	private CodeValueT completionStatusOid;
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "ENROLLMENT_DATE")
 	private Date enrollmentDate;
@@ -82,6 +87,14 @@ public class EnrollmentT extends DomainEntity{
 
 	public void setEnrollmentDate(Date enrollmentDate) {
 		this.enrollmentDate = enrollmentDate;
+	}
+
+	public CodeValueT getCompletionStatusOid() {
+		return completionStatusOid;
+	}
+
+	public void setCompletionStatusOid(CodeValueT completionStatusOid) {
+		this.completionStatusOid = completionStatusOid;
 	}
 
 }

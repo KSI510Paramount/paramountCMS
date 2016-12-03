@@ -67,6 +67,14 @@ public class FacultyController extends TopController{
 	    		}
 	    	}
 	    	
+	    	String facultyPrefixOid = request.getParameter("facultyPrefixOid");
+	    	if(StringUtils.isNotBlank(facultyPrefixOid)){
+	    		CodeValueT facultyPrefixCode = codeValueService.findById(CodeValueT.class, Long.valueOf(facultyPrefixOid));
+	    		if(facultyPrefixCode != null){
+	    			faculty.setPrefixOid(facultyPrefixCode);
+	    		}
+	    	}
+	    	
 	    	String classStatusOid = request.getParameter("classStatusOid");
 	    	if(StringUtils.isNotBlank(classStatusOid)){
 	    		CodeValueT classStatusCode = codeValueService.findById(CodeValueT.class, Long.valueOf(classStatusOid));
@@ -136,6 +144,16 @@ public class FacultyController extends TopController{
 				    		}
 				    	}else{
 				    		faculty.setFacultyTypeOid(null);
+				    	}
+				    	
+				    	String facultyPrefixOid = request.getParameter("facultyPrefixOid");
+				    	if(StringUtils.isNotBlank(facultyPrefixOid)){
+				    		CodeValueT facultyPrefixCode = codeValueService.findById(CodeValueT.class, Long.valueOf(facultyPrefixOid));
+				    		if(facultyPrefixCode != null){
+				    			faculty.setPrefixOid(facultyPrefixCode);
+				    		}
+				    	}else{
+				    		faculty.setPrefixOid(null);
 				    	}
 				    	
 				    	String facultyStatusOid = request.getParameter("facultyStatusOid");
