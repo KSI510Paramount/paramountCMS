@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="/WEB-INF/tld/CodeValue.tld" prefix="code" %>
 <section>
-<form method="post" action="<c:url value="/attendance/postAttendance.do"/>">
+<form id="attendanceForm" method="post" action="<c:url value="/attendance/postAttendance.do"/>">
 	<div class="row 25%">
 		<div class="2u 4u(small)">
 			<label>Course:</label>
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 	<ul class="actions">
-		<li><input type="submit" value="Submit" class="special" /></li>
+		<li><input id="submitButton" type="button" value="Submit" class="special" /></li>
 		<li><input type="button" id="cancel" value="Cancel" class="special"/></li>
 	</ul>
 	<table id="enrollmentTable" class="display" cellspacing="0" width="100%">
@@ -59,7 +59,7 @@
 					<td><c:out value="${enrollment.studentOid.studentStatusOid.shortDescription}" /></td>
 					<td><c:out value="${enrollment.studentOid.classStatusOid.shortDescription}" /></td>
 					<td>
-						<input style="margin-top: .8em;" type="checkbox" name="enrollOids" id="enrollOids" value="${enrollment.objectid }" required title="Please select at least one Student."/>
+						<input style="margin-top: .8em;" class="attendanceChk" type="checkbox" name="enrollOids" id="enrollOids${enrollment.objectid }" value="${enrollment.objectid }"/>
 					</td>
 				</tr>
 			</c:forEach>
@@ -81,6 +81,17 @@
 		});
 		$( "#cancel" ).click(function() {
 			window.location.href='<c:url value="/attendance/getList.do"/>';
+		});
+		$("#submitButton").click(function(){
+			if($('.attendanceChk:checkbox:checked').length > 0){
+				if(!$("#attendanceForm").validate()){
+					return false;
+				}else{
+					$("#attendanceForm").submit();
+				}		
+			}else{
+				alert("Please select at least one student.");
+			}
 		});
 	} );
 })(jQuery); 

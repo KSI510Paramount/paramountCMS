@@ -21,7 +21,7 @@ import org.hibernate.annotations.NotFoundAction;
 @NamedQueries({
 	@NamedQuery(name="TotalPointT.findAll", query="Select a from TotalPointT a")
 })
-
+//Not using
 public class TotalPointT extends DomainEntity{
 
 	/**

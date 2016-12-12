@@ -178,13 +178,15 @@ public class EnrollmentController extends TopController{
 	@RequestMapping(value = "/getDeletEnrollment.do", method=RequestMethod.GET)
 	public String getDeletEnrollment(WebRequest request){
 		String enrollmentOid= request.getParameter("objectid");
+		Long courseOfferOid = null;
 		if(StringUtils.isNotBlank(enrollmentOid)){
 			EnrollmentT enroll = enrollService.findById(EnrollmentT.class, Long.valueOf(enrollmentOid));
 			if(enroll != null){
+				courseOfferOid = enroll.getCourseOfferOid().getObjectid();
 				enrollService.delete(enroll);
 			}
 		}
-		return "redirect:/enroll/getView.do?objectid="+enrollmentOid;
+		return "redirect:/enroll/getView.do?objectid="+courseOfferOid;
 	}
 	
 	@RequestMapping(value = "/getWithdrawEnrollment.do", method=RequestMethod.GET)

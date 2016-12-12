@@ -4,7 +4,7 @@
 		<ul class="actions">
 			<li><input type="button" id="back" value="Back" class="special" /></li>
 		</ul>
-<a class="addLink" href="<c:url value="/enroll/getEnroll.do?objectid=${courseOffer.objectid }"/>">[Add Course Offer]</a>
+<a class="addLink" href="<c:url value="/enroll/getEnroll.do?objectid=${courseOffer.objectid }"/>">[Enroll Student]</a>
 	<div class="row 25%">
 		<div class="2u 4u(small)">
 			<label>Course:</label>

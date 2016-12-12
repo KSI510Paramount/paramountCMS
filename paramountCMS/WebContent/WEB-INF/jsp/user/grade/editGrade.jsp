@@ -98,6 +98,10 @@ var extendedChk = '${grade.extendedGrade}';
 			var value = $("#gradeTypeOid option:selected").attr("shortDescription");
 			$("#actualPoint").val(value);
 		});
+		$("#extendedGradeTypeOid").change(function(){
+			var value = $("#extendedGradeTypeOid option:selected").attr("shortDescription");
+			$("#actualPoint").val(value);
+		});
 		chk();
 	} );
 })(jQuery); 

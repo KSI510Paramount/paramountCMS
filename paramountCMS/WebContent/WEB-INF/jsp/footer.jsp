@@ -34,7 +34,7 @@
 			</ul>
 		</section> -->
 		<ul class="copyright">
-			<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="#">CMS</a></li>
+			<li>&copy; www.ksi.edu. All rights reserved</li><li>Design: <a href="#">CMS</a></li>
 		</ul>
 	</div>
 </footer>

@@ -63,8 +63,56 @@ public class AttendanceController extends TopController{
 		return "attendance.view";
 	}
 	
+	@RequestMapping(value = "/getEditAttendance.do", method=RequestMethod.GET)
+	public String getEditAttendance(WebRequest request){
+		String attendaceOid= request.getParameter("objectid");
+		if(StringUtils.isNotBlank(attendaceOid)){
+			AttendanceT attendance = attendanceService.findById(AttendanceT.class, Long.valueOf(attendaceOid));
+			if(attendance != null){
+				request.setAttribute("attendance", attendance, WebRequest.SCOPE_REQUEST);			
+				request.setAttribute("courseOffer", attendance.getEnrollmentOid().getCourseOfferOid(), WebRequest.SCOPE_REQUEST);				
+			}
+		}
+		return "attendance.edit";
+	}
+	
+	@RequestMapping(value = "/postEditAttendance.do", method=RequestMethod.POST)
+	public String postEditAttendance(WebRequest request, HttpServletRequest httpRequest){
+		Long courseOfferOid = null;
+		String attendaceOid= request.getParameter("objectid");
+		if(StringUtils.isNotBlank(attendaceOid)){
+			AttendanceT attendance = attendanceService.findById(AttendanceT.class, Long.valueOf(attendaceOid));
+			if(attendance != null){
+				getDataBinder(request, attendance);
+				String attenTypeOid = request.getParameter("attenTypeOid");
+		    	if(StringUtils.isNotBlank(attenTypeOid)){
+		    		CodeValueT attenTypeCode = enrollmentService.findById(CodeValueT.class, Long.valueOf(attenTypeOid));
+		    		if(attenTypeCode != null){
+		    			attendance.setAttenTypeOid(attenTypeCode);
+		    		}
+		    	}
+		    	courseOfferOid = attendance.getEnrollmentOid().getCourseOfferOid().getObjectid();
+		    	attendanceService.update(attendance);
+			}
+		}
+		return "redirect:/attendance/getViewStudent.do?objectid="+courseOfferOid;
+	}
+	
 	@RequestMapping(value = "/getViewStudent.do", method=RequestMethod.GET)
 	public String getViewStudent(WebRequest request){
+		String courseOfferOid= request.getParameter("objectid");
+		request.setAttribute("courseOfferOid", request.getParameter("courseOfferOid"), WebRequest.SCOPE_REQUEST);
+		if(StringUtils.isNotBlank(courseOfferOid)){
+			List<AttendanceT> attendanceList = attendanceService.findByCourseOfferOid(Long.valueOf(courseOfferOid));
+			request.setAttribute("attendanceList", attendanceList, WebRequest.SCOPE_REQUEST);
+			CourseOfferT courseOffer = null;
+			if(attendanceList != null && !attendanceList.isEmpty()){
+				courseOffer = attendanceList.get(0).getEnrollmentOid().getCourseOfferOid();
+			}else{
+				courseOffer = attendanceService.findById(CourseOfferT.class, Long.valueOf(courseOfferOid));
+			}
+			request.setAttribute("courseOffer", courseOffer, WebRequest.SCOPE_REQUEST);
+		}
 		return "attendance.viewStudent";
 	}
 	

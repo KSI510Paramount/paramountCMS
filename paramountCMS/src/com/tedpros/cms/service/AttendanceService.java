@@ -9,5 +9,7 @@ public interface AttendanceService extends CmsDAO{
 
 	List<AttendanceT> findAll();
 
+	List<AttendanceT> findByCourseOfferOid(Long courseOfferOid);
+
 
 }

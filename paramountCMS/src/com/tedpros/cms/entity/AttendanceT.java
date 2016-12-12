@@ -21,7 +21,8 @@ import org.hibernate.annotations.NotFoundAction;
 @Entity
 @Table(name="ATTENDANCE_T",schema="CMSWEB")
 @NamedQueries({
-	@NamedQuery(name="AttendanceT.findAll", query="Select a from AttendanceT a")
+	@NamedQuery(name="AttendanceT.findAll", query="Select a from AttendanceT a"),
+	@NamedQuery(name="AttendanceT.findByCourseOfferOid", query="Select a from AttendanceT a WHERE a.enrollmentOid.courseOfferOid.objectid = :courseOfferOid")
 })
 
 public class AttendanceT extends DomainEntity{
@@ -47,7 +48,7 @@ public class AttendanceT extends DomainEntity{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "ATTENDANCE_DATE")
-	private Date attendamceDate;
+	private Date attendanceDate;
 	
 	@Column(name = "COMMENTS")
 	private String comments;
@@ -76,12 +77,12 @@ public class AttendanceT extends DomainEntity{
 		this.attenTypeOid = attenTypeOid;
 	}
 
-	public Date getAttendamceDate() {
-		return attendamceDate;
+	public Date getAttendanceDate() {
+		return attendanceDate;
 	}
 
-	public void setAttendamceDate(Date attendamceDate) {
-		this.attendamceDate = attendamceDate;
+	public void setAttendanceDate(Date attendamceDate) {
+		this.attendanceDate = attendamceDate;
 	}
 
 	public String getComments() {

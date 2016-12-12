@@ -177,6 +177,10 @@ var courseOfferOid = '${courseOffer.objectid }';
 			var value = $("#gradeTypeOid option:selected").attr("shortDescription");
 			$("#actualPoint").val(value);
 		});
+		$("#extendedGradeTypeOid").change(function(){
+			var value = $("#extendedGradeTypeOid option:selected").attr("shortDescription");
+			$("#actualPoint").val(value);
+		});
 	} );
 })(jQuery); 
 function resetGradeDD(value){

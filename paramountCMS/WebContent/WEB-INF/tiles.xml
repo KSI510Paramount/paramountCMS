@@ -113,9 +113,13 @@
     <put-attribute name="title" value="View Attendance"/>
     <put-attribute name="body" value="/WEB-INF/jsp/user/attendance/view.jsp" />
   </definition>
-  <definition name="attendance.edit" extends="initialTemplate">
-    <put-attribute name="title" value="View Student"/>
+  <definition name="attendance.viewStudent" extends="initialTemplate">
+    <put-attribute name="title" value="Student Attendace"/>
     <put-attribute name="body" value="/WEB-INF/jsp/user/attendance/viewStudent.jsp" />
+  </definition>
+  <definition name="attendance.edit" extends="initialTemplate">
+    <put-attribute name="title" value="Edit Student Attendace"/>
+    <put-attribute name="body" value="/WEB-INF/jsp/user/attendance/editAttendance.jsp" />
   </definition>
   <definition name="attendance.list" extends="initialTemplate">
     <put-attribute name="title" value="Course Enrolled List"/>

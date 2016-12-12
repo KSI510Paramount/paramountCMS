@@ -23,8 +23,8 @@
 					<td><fmt:formatDate value="${courseOffer.endDate}" /></td>
 					<td><c:out value="${courseOffer.locationOid.shortDescription }"></c:out></td>
 					<td>
-						<a href="<c:url value="/enroll/getEnroll.do?objectid=${courseOffer.objectid }"/>">[Enroll Course]</a>&nbsp;
-						<a href="<c:url value="/enroll/getView.do?objectid=${courseOffer.objectid }"/>">[Manage Enrolled]</a>&nbsp;
+						<a href="<c:url value="/enroll/getEnroll.do?objectid=${courseOffer.objectid }"/>">[Enroll Student]</a>&nbsp;
+						<a href="<c:url value="/enroll/getView.do?objectid=${courseOffer.objectid }"/>">[Manage Enrolled Student]</a>&nbsp;
 					</td>
 				</tr>
 			</c:forEach>
