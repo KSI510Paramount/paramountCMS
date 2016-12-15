@@ -20,7 +20,7 @@
 				<label for="description">Description:</label>
 			</div>
 			<div class="10u 8u(small)">
-				<textarea id="description" name="description" cols="15" rows="4"></textarea>
+				<input type="text" id="description" name="description" />
 			</div>
 		</div>
 		<div class="row 25%">

@@ -21,7 +21,7 @@
 				<label for="description">Description:</label>
 			</div>
 			<div class="10u 8u(small)">
-				<textarea id="description" name="description" cols="15" rows="4">${course.description}</textarea>
+				<input type="text" id="description" name="description" value="${course.description}"/>
 			</div>
 		</div>
 		<div class="row 25%">

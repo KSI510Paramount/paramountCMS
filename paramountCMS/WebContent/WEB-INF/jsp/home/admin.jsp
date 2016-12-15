@@ -36,4 +36,16 @@
 			</div>
 		</a>
 	</article>
+	<article class="style6">
+		<span class="image" style="height: 258px;">
+			<img src='<c:url value="/assets/images/course.png" />' alt="" />
+		</span>
+		
+		<a href="<c:url value="/course/getList.do"/>">
+			<h2>Manage Course</h2>
+			<div class="content">
+				<p>Add Course</p>
+			</div>
+		</a>
+	</article>
 </section>
